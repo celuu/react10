@@ -1,11 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
+import { Route, Routes } from "react-router-dom";
+
+import CalculatorPage from "./components/CalculatorPage"
 
 function App() {
   return (
-    <div>
-      Hello, world
-    </div>
+    <>
+      <Routes>
+        <Route path='/calculator'> 
+          <CalculatorPage />
+        </Route>
+        
+      </Routes>
+    </>
+
+
   );
 }
 

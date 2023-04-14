@@ -1,6 +1,6 @@
 
-const Calculator = () => {
+const CalculatorPage = () => {
     return <h1>HI</h1>
 }
 
-export default Calculator
+export default CalculatorPage
