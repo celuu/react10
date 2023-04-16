@@ -1,8 +1,12 @@
+import { Textfit } from "react-textfit";
+import "./CalculatorPage.css";
 
-const Screen = () => {
-    return <div>
-        
-    </div>
-}
+const Screen = ({ value }) => {
+  return (
+    <Textfit className="screen" mode="single" max={70}>
+      {value}
+    </Textfit>
+  );
+};
 
-export default Screen
+export default Screen;

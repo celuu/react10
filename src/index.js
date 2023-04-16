@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 // import reportWebVitals from './reportWebVitals';
 import configureStore from "./store";
+import { BrowserRouter } from 'react-router-dom';
 
 const store = configureStore()
 
@@ -13,9 +14,11 @@ if (process.env.NODE_ENV !== "production") {
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode store={store}>
-    <App />
-  </React.StrictMode>
+  <BrowserRouter>
+    <React.StrictMode store={store}>
+      <App />
+    </React.StrictMode>
+  </BrowserRouter>
 );
 
 
