@@ -1,20 +1,14 @@
 import './App.css';
 import { Route, Routes } from "react-router-dom";
-
-import CalculatorPage from "./components/CalculatorPage"
+import CalculatorPage from './components/CalculatorPage/CalculatorPage';
 
 function App() {
   return (
     <>
       <Routes>
-        <Route path='/calculator'> 
-          <CalculatorPage />
-        </Route>
-        
+        <Route path="/calculator" element={<CalculatorPage />}></Route>
       </Routes>
     </>
-
-
   );
 }
 

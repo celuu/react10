@@ -1,6 +1,8 @@
-
-const CalculatorPage = () => {
-    return <h1>HI</h1>
+import "./CalculatorPage.css"
+const CalculatorPage = ({children}) => {
+    return <div className="wrapper">
+        {children}
+    </div>
 }
 
 export default CalculatorPage
