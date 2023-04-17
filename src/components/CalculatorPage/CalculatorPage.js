@@ -28,21 +28,21 @@ const CalculatorPage = () => {
     const removeSpaces = (num) => num.toString().replace(/\s/g, "");
 
     const numClickHandler = (e) => {
-      e.preventDefault();
-      const value = e.target.innerHTML;
+        e.preventDefault();
+        const value = e.target.innerHTML;
 
-      if (calc.num.length < 16) {
+        if (removeSpaces(calc.num).length < 16) {
         setCalc({
-          ...calc,
-          num:
+            ...calc,
+            num:
             calc.num === 0 && value === "0"
-              ? "0"
-              : calc.num % 1 === 0
-              ? Number(calc.num + value)
-              : calc.num + value,
-          res: !calc.sign ? 0 : calc.res,
+                ? "0"
+                : removeSpaces(calc.num) % 1 === 0
+                ? toLocaleString(Number(removeSpaces(calc.num + value)))
+                : toLocaleString(calc.num + value),
+            res: !calc.sign ? 0 : calc.res,
         });
-      }
+        }
     };
 
     const commaClickHandler = (e) => {
@@ -54,74 +54,81 @@ const CalculatorPage = () => {
       });
     };
 
-    const signClickHandler = (e) => {
-      e.preventDefault();
-      const value = e.target.innerHTML;
-      setCalc({
-        ...calc,
-        sign: value,
-        res: !calc.res && calc.num ? calc.num : calc.res,
-        num: 0,
-      });
-    };
-
-    const equalsClickHandler = () => {
-      if (calc.sign && calc.num) {
-        const math = (a, b, sign) =>
-          sign === "+"
-            ? a + b
-            : sign === "-"
-            ? a - b
-            : sign === "X"
-            ? a * b
-            : a / b;
+      const signClickHandler = (e) => {
+        e.preventDefault();
+        const value = e.target.innerHTML;
 
         setCalc({
           ...calc,
-          res:
-            calc.num === "0" && calc.sign === "/"
-              ? "Can't divide with 0"
-              : math(Number(calc.res), Number(calc.num), calc.sign),
-          sign: "",
+          sign: value,
+          res: !calc.res && calc.num ? calc.num : calc.res,
           num: 0,
         });
-      }
-    };
+      };
 
-    const invertClickHandler = () => {
-      setCalc({
-        ...calc,
-        num: calc.num ? calc.num * -1 : 0,
-        res: calc.res ? calc.res * -1 : 0,
-        sign: "",
-      });
-    };
+      const equalsClickHandler = () => {
+        if (calc.sign && calc.num) {
+          const math = (a, b, sign) =>
+            sign === "+"
+              ? a + b
+              : sign === "-"
+              ? a - b
+              : sign === "X"
+              ? a * b
+              : a / b;
 
-    const percentClickHandler = () => {
-      let num = calc.num ? parseFloat(calc.num) : 0;
-      let res = calc.res ? parseFloat(calc.res) : 0;
+          setCalc({
+            ...calc,
+            res:
+              calc.num === "0" && calc.sign === "/"
+                ? "Can't divide with 0"
+                : toLocaleString(
+                    math(
+                      Number(removeSpaces(calc.res)),
+                      Number(removeSpaces(calc.num)),
+                      calc.sign
+                    )
+                  ),
+            sign: "",
+            num: 0,
+          });
+        }
+      };
 
-      setCalc({
-        ...calc,
-        num: (num /= Math.pow(100, 1)),
-        res: (res /= Math.pow(100, 1)),
-        sign: "",
-      });
-    };
+      const invertClickHandler = () => {
+        setCalc({
+          ...calc,
+          num: calc.num ? toLocaleString(removeSpaces(calc.num) * -1) : 0,
+          res: calc.res ? toLocaleString(removeSpaces(calc.res) * -1) : 0,
+          sign: "",
+        });
+      };
 
-    const resetClickHandler = () => {
-      setCalc({
-        ...calc,
-        sign: "",
-        num: 0,
-        res: 0,
-      });
-    };
+      const percentClickHandler = () => {
+        let num = calc.num ? parseFloat(removeSpaces(calc.num)) : 0;
+        let res = calc.res ? parseFloat(removeSpaces(calc.res)) : 0;
+
+        setCalc({
+          ...calc,
+          num: (num /= Math.pow(100, 1)),
+          res: (res /= Math.pow(100, 1)),
+          sign: "",
+        });
+      };
+
+      const resetClickHandler = () => {
+        setCalc({
+          ...calc,
+          sign: "",
+          num: 0,
+          res: 0,
+        });
+      };
 
 
     return (
       <Wrapper>
-        <Screen value={0} />
+        <Screen value={calc.num ? calc.num : calc.res} />
         <ButtonBox>
           {btnValues.flat().map((btn, i) => {
             return (
