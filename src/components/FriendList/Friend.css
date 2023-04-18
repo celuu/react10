@@ -1,0 +1,13 @@
+.friend-labels {
+    padding: 10px;
+
+}
+
+.friend-container {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    padding: 5px;
+}
