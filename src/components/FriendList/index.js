@@ -5,7 +5,7 @@ import "./Friend.css"
 const FriendList = () => {
 
     const [filterClicked, setFilterClicked] = useState(false)
-    const [filter, setFilter] = useState("")
+    
     const [list, setList] = useState([
       {
         name: "Christine",
@@ -44,7 +44,7 @@ const FriendList = () => {
       }
     ]);
 
-    
+    const [filteredList, setFilteredList] = useState(list);
 
     const selectAllClickHandler = (e) => {
         if(!e.target.checked) return;
@@ -69,10 +69,9 @@ const FriendList = () => {
 
     const filterAgeClickHandler = (e, idx) => {
         if(e.target.id === "below-21") {
-            list.map((person) => {
-                person.age < 21
-            })
-            return list
+          const filteredList = Object.keys(list)
+            .filter((key) => key.includes("age"))
+          setFilteredList(filteredList)
         } else if (e.target.id === "21-25") {
         } else if (e.target.id === "25-35") {
         } else {
