@@ -3,11 +3,52 @@
 
 }
 
-.friend-container {
+.total-container {
     display: flex;
     flex-direction: column;
+    height: 500px;
 }
 
 input {
     padding: 5px;
+}
+
+.all-container {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+}
+
+.select-all {
+    padding: 10px;
+}
+.deselect-all {
+    padding: 10px;
+}
+
+.friend-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.age-options {
+    background-color: white;
+    width: 150px;
+    height: 90px;
+    border-radius: 5px;
+    position: absolute;
+    outline: black 2px dotted
+}
+
+.no-age-options {
+    display: none;
+}
+
+.each-option {
+    cursor: pointer;
+}
+.each-option:hover {
+    color: red;
+    background-color: grey;
 }
