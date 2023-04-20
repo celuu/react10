@@ -20,7 +20,7 @@ const FriendList = () => {
       {
         name: "Morgan",
         checked: false,
-        age: 6
+        age: 24
       },
       {
         name: "Nishant",
@@ -69,12 +69,21 @@ const FriendList = () => {
 
     const filterAgeClickHandler = (e, idx) => {
         if(e.target.id === "below-21") {
-          const filteredList = Object.keys(list)
-            .filter((key) => key.includes("age"))
-          setFilteredList(filteredList)
+            setFilteredList(
+                list.filter(
+                  (person) => person.age < 21 && person.age > 0
+                )
+              );
         } else if (e.target.id === "21-25") {
+            setFilteredList(list.filter((person) => person.age >= 21 && person.age < 25));
         } else if (e.target.id === "25-35") {
+          setFilteredList(
+            list.filter((person) => person.age >= 25 && person.age < 35)
+          );
         } else {
+          setFilteredList(
+            list.filter((person) => person.age >= 35)
+          );
         }
     }
 
@@ -107,7 +116,7 @@ const FriendList = () => {
               <li
                 className="each-option"
                 id="below-21"
-                onClick={filterAgeClickHandler}
+                onChange={filterAgeClickHandler}
               >
                 5 - 21
               </li>
@@ -137,7 +146,7 @@ const FriendList = () => {
         </div>
 
         <div className="friend-container">
-          {list.map((person, idx) => {
+          {(filteredList ?? list).map((person, idx) => {
             return (
               <>
                 <label className="friend-labels">
