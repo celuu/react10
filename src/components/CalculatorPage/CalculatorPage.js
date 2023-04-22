@@ -4,7 +4,8 @@ import Wrapper from "./Wrapper";
 import ButtonBox from "./ButtonBox";
 import Button from "./Button";
 import React from "react"
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { ThemeContext } from "../../App";
 
 const btnValues = [
   ["C", "+-", "%", "/"],
@@ -15,6 +16,13 @@ const btnValues = [
 ];
 
 const CalculatorPage = () => {
+
+    const darkTheme = useContext(ThemeContext);
+
+    const themeStyles = {
+      backgroundColor: darkTheme ? "#333" : "#CCC",
+      color: darkTheme ? "#CCC" : "#333",
+    };
 
     let [calc, setCalc] = useState({
         sign: "",
@@ -127,35 +135,37 @@ const CalculatorPage = () => {
 
 
     return (
-      <Wrapper>
-        <Screen value={calc.num ? calc.num : calc.res} />
-        <ButtonBox>
-          {btnValues.flat().map((btn, i) => {
-            return (
-              <Button
-                key={i}
-                className={btn === "=" ? "equals" : ""}
-                value={btn}
-                onClick={
-                  btn === "C"
-                    ? resetClickHandler
-                    : btn === "+-"
-                    ? invertClickHandler
-                    : btn === "%"
-                    ? percentClickHandler
-                    : btn === "="
-                    ? equalsClickHandler
-                    : btn === "/" || btn === "X" || btn === "-" || btn === "+"
-                    ? signClickHandler
-                    : btn === "."
-                    ? commaClickHandler
-                    : numClickHandler
-                }
-              />
-            );
-          })}
-        </ButtonBox>
-      </Wrapper>
+      <div style={themeStyles}>
+        <Wrapper>
+          <Screen value={calc.num ? calc.num : calc.res} />
+          <ButtonBox>
+            {btnValues.flat().map((btn, i) => {
+              return (
+                <Button
+                  key={i}
+                  className={btn === "=" ? "equals" : ""}
+                  value={btn}
+                  onClick={
+                    btn === "C"
+                      ? resetClickHandler
+                      : btn === "+-"
+                      ? invertClickHandler
+                      : btn === "%"
+                      ? percentClickHandler
+                      : btn === "="
+                      ? equalsClickHandler
+                      : btn === "/" || btn === "X" || btn === "-" || btn === "+"
+                      ? signClickHandler
+                      : btn === "."
+                      ? commaClickHandler
+                      : numClickHandler
+                  }
+                />
+              );
+            })}
+          </ButtonBox>
+        </Wrapper>
+      </div>
     );
 }
 

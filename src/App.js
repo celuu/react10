@@ -14,10 +14,16 @@ function App() {
   const toggleTheme = () => {
     setDarkTheme(prev => !prev)
   }
+
+  const themeStyles = {
+    backgroundColor: darkTheme ? "#333" : "#CCC",
+    color: darkTheme ? "#CCC" : "#333",
+  };
   
   return (
     <ThemeContext.Provider value={darkTheme}>
       <Navigation />
+      <button onClick={toggleTheme}>Toggle</button>
       <Routes>
         <Route path="/calculator" element={<CalculatorPage />}></Route>
         <Route path="/friends" element={<FriendList />}></Route>
