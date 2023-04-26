@@ -17,6 +17,9 @@ const Navigation = () => {
         <Link to="/toggle" className="calc-name">
           Toggle
         </Link>
+        <Link to="/weather" className="calc-name">
+          Weather
+        </Link>
       </div>
     );
 }

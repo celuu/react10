@@ -6,6 +6,7 @@ import FriendList from './components/FriendList';
 import React from 'react';
 import { ThemeProvider } from './ThemeContext';
 import Toggle from './components/Toggle';
+import WeatherPage from './components/WeatherPage';
 
 function App() {
 
@@ -15,7 +16,8 @@ function App() {
       <Routes>
         <Route path="/calculator" element={<CalculatorPage />}></Route>
         <Route path="/friends" element={<FriendList />}></Route>
-        <Route path='/toggle' element={<Toggle />}></Route>
+        <Route path="/toggle" element={<Toggle />}></Route>
+        <Route path="/weather" element={<WeatherPage />}></Route>
       </Routes>
     </ThemeProvider>
   );
