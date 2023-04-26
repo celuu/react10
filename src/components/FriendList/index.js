@@ -10,7 +10,7 @@ const FriendList = () => {
       {
         name: "Christine",
         checked: false,
-        age: 25
+        age: 5
       },
       {
         name: "Jacob",
@@ -48,12 +48,14 @@ const FriendList = () => {
 
     const selectAllClickHandler = (e) => {
         if(!e.target.checked) return;
-        list.forEach((person) => {
-          person.checked = true;
-        });
-        setList([...list]);
+        let tempList = [...list] //creates copy of list
+        for(let i = 0; i < tempList.length; i++){
+          tempList[i].person.checked = true
+        }
+        setList(tempList)
     }
 
+    //Change this to a tempList variable
     const deselectAllClickHandler = (e) => {
         if(!e.target.checked) return;
         list.forEach((person) => {
@@ -66,7 +68,7 @@ const FriendList = () => {
         list[idx].checked = e.target.checked
         setList([...list])
     }
-
+    // CHANGE THIS TO TAKE IN IDX instead of using an ID
     const filterAgeClickHandler = (e, idx) => {
         if(e.target.id === "below-21") {
             setFilteredList(
@@ -116,7 +118,7 @@ const FriendList = () => {
               <li
                 className="each-option"
                 id="below-21"
-                onChange={filterAgeClickHandler}
+                onClick={filterAgeClickHandler}
               >
                 5 - 21
               </li>

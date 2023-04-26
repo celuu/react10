@@ -5,7 +5,7 @@ import ButtonBox from "./ButtonBox";
 import Button from "./Button";
 import React from "react"
 import { useState, useContext } from "react";
-import { ThemeProvider } from "../../ThemeContext";
+
 
 const btnValues = [
   ["C", "+-", "%", "/"],
@@ -16,13 +16,6 @@ const btnValues = [
 ];
 
 const CalculatorPage = () => {
-
-    const darkTheme = useContext(ThemeProvider);
-
-    const themeStyles = {
-      backgroundColor: darkTheme ? "#333" : "#CCC",
-      color: darkTheme ? "#CCC" : "#333",
-    };
 
     let [calc, setCalc] = useState({
         sign: "",
@@ -135,7 +128,7 @@ const CalculatorPage = () => {
 
 
     return (
-      <div style={themeStyles}>
+      <div>
         <Wrapper>
           <Screen value={calc.num ? calc.num : calc.res} />
           <ButtonBox>
