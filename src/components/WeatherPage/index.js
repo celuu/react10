@@ -3,22 +3,24 @@ import "./WeatherPage.css"
 
 const WeatherPage = () => {
     const [location, setLocation] = useState("")
-    const apiKey = ;
+    const apiKey = "4e1fad9363c99db7f1af55ce5c563d15";
     const lat = 37.7749;
     const long = 122.4194;
 
+    const getCoordinates = () => {
+        const geocoder = new google.maps.Geocoder();
+        
+    }
+
     const getWeather = () => {
         fetch(
-          "https://api.openweathermap.org/data/3.0/onecall?lat=37.7749&lon=122.4194&appid=",
+          `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&appid=${apiKey}`,
           {
-            method: "GET",
-            headers: {
-                "Access-Control-Allow-Origin": "*"
-            },
+            method: "GET"
           }
         )
           .then((response) => {
-            console.log(response);
+            console.log(response.json());
           })
           .catch((err) => {
             console.log(err);
