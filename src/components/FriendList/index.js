@@ -48,11 +48,10 @@ const FriendList = () => {
 
     const selectAllClickHandler = (e) => {
         if(!e.target.checked) return;
-        let tempList = [...list] //creates copy of list
-        for(let i = 0; i < tempList.length; i++){
-          tempList[i].person.checked = true
-        }
-        setList(tempList)
+        list.forEach((person) => {
+          person.checked = true;
+        });
+        setList([...list])
     }
 
     //Change this to a tempList variable
