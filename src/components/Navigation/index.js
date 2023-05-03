@@ -20,6 +20,9 @@ const Navigation = () => {
         <Link to="/weather" className="calc-name">
           Weather
         </Link>
+        <Link to="/todo" className="calc-name">
+          To-Do List
+        </Link>
       </div>
     );
 }
