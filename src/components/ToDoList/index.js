@@ -7,10 +7,12 @@ const ToDoList = () => {
             isCompleted: false
         }
     ]);
+    const [input, setInput] = useState("")
 
     const addToList = (value) => {
         const newToDo = [...list, {item: value, isCompleted: false}]
         setList(newToDo)
+        setInput("")
     }
 
     const deleteFromList = (index) => {
@@ -21,30 +23,41 @@ const ToDoList = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        const inputValue = event.target.elements.todoInput.value;
-        if (inputValue) {
-            console.log(inputValue)
-            addToList(inputValue);
-            event.target.reset();
+        if (input) {
+            addToList(input);
+            setInput("")
         }
     };
+
+    const isCompletedButtonClicked = (index) => {
+      const newList = [...list];
+      newList[index].isCompleted = !newList[index].isCompleted
+      setList(newList)
+    }
+
 
 
     return (
       <>
         <div>
           <h1>To-Do List</h1>
-          <form onSubmit={handleSubmit}>
-            <label>
-              New item:
-              <input type="text" name="todoInput" />
-            </label>
-            <button type="submit">Add</button>
-          </form>
+
+          <label>
+            New item:
+            <input
+              type="text"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+            />
+          </label>
+          <button onClick={() => addToList(input)}>Add</button>
           <ul>
             {list.map((item, index) => (
               <>
                 <li key={index}>{item.item}</li>
+                <button onClick={() => isCompletedButtonClicked(index)}>
+                  {item.isCompleted ? "click to uncheck" : "mark to complete"}
+                </button>
                 <button onClick={() => deleteFromList(index)}>Delete</button>
               </>
             ))}
