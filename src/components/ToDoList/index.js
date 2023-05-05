@@ -9,7 +9,8 @@ const ToDoList = () => {
     ]);
     const [input, setInput] = useState("")
 
-    const addToList = (value) => {
+    const addToList = (e, value) => {
+        e.preventDefault();
         const newToDo = [...list, {item: value, isCompleted: false}]
         setList(newToDo)
         setInput("")
@@ -41,16 +42,17 @@ const ToDoList = () => {
       <>
         <div>
           <h1>To-Do List</h1>
-
-          <label>
-            New item:
-            <input
-              type="text"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-            />
-          </label>
-          <button onClick={() => addToList(input)}>Add</button>
+          <form>
+            <label>
+              New item:
+              <input
+                type="text"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+              />
+            </label>
+            <button onClick={(e) => addToList(e, input)}>Add</button>
+          </form>
           <ul>
             {list.map((item, index) => (
               <>

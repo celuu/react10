@@ -23,6 +23,8 @@ const Navigation = () => {
         <Link to="/todo" className="calc-name">
           To-Do List
         </Link>
+        <Link to="/board" className="calc-name">
+          Board</Link>
       </div>
     );
 }
