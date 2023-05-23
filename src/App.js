@@ -10,6 +10,7 @@ import WeatherPage from './components/WeatherPage';
 import ToDoList from './components/ToDoList';
 import Board from './components/Board';
 import ListUsers from './components/ListUsers/ListUsers';
+import ResultDisplayer from './components/ResultDisplayer/ResultDisplayer';
 
 function App() {
 
@@ -21,8 +22,19 @@ function App() {
         <Route path="/friends" element={<FriendList />}></Route>
         <Route path="/toggle" element={<Toggle />}></Route>
         <Route path="/weather" element={<WeatherPage />}></Route>
-        <Route path='/todo' element={<ToDoList />}></Route>
-        <Route path='/board' element={<ListUsers users={[{firstName: "Ada", lastName: "Lovelace"}, {firstName: "Don", lastName: "Apple"}]}/>}></Route>
+        <Route path="/todo" element={<ToDoList />}></Route>
+        <Route
+          path="/board"
+          element={
+            <ListUsers
+              users={[
+                { firstName: "Ada", lastName: "Lovelace" },
+                { firstName: "Don", lastName: "Apple" },
+              ]}
+            />
+          }
+        ></Route>
+        <Route path="/result" element={<ResultDisplayer getNewResult={() => 'test'}/>}></Route>
       </Routes>
     </ThemeProvider>
   );
