@@ -24,7 +24,7 @@ const Navigation = () => {
           To-Do List
         </Link>
         <Link to="/board" className="calc-name">
-          Board</Link>
+          List Users</Link>
       </div>
     );
 }

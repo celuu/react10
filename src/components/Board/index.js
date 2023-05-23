@@ -1,9 +1,9 @@
-
+import { useState } from "react";
 
 const Board = () => {
-    const rowLength = 10;
-    const columnLength = 10;
-      const grid = [];
+    const rowLength = 5;
+    const columnLength = 5;
+    const [grid, setGrid] = useState([])
 
     const createGrid = () => {
         for (let row = 0; row <= rowLength ; row++) {
@@ -12,10 +12,8 @@ const Board = () => {
             currentRow.push(createNode(row, col));
         }
         grid.push(currentRow);
-        grid.push(currentRow);
-        console.log(grid);
         }
-        return grid;
+        setGrid(grid)
     }  
 
     const createNode = (row, col) => {
@@ -23,14 +21,12 @@ const Board = () => {
         row,
         col,
       };
-      console.log(row);
-      console.log(col);
     };
 
     return (
       <>
-      
-
+        <button onClick={createGrid}>click here</button>
+        <ul>{grid ?? grid.map((row) => row.map((col) => <li>{col}</li>))}</ul>
       </>
     );
 

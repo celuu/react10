@@ -9,6 +9,7 @@ import Toggle from './components/Toggle';
 import WeatherPage from './components/WeatherPage';
 import ToDoList from './components/ToDoList';
 import Board from './components/Board';
+import ListUsers from './components/ListUsers/ListUsers';
 
 function App() {
 
@@ -21,7 +22,7 @@ function App() {
         <Route path="/toggle" element={<Toggle />}></Route>
         <Route path="/weather" element={<WeatherPage />}></Route>
         <Route path='/todo' element={<ToDoList />}></Route>
-        <Route path='/board' element={<Board/>}></Route>
+        <Route path='/board' element={<ListUsers users={[{firstName: "Ada", lastName: "Lovelace"}, {firstName: "Don", lastName: "Apple"}]}/>}></Route>
       </Routes>
     </ThemeProvider>
   );
