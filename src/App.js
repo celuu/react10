@@ -11,6 +11,8 @@ import ToDoList from './components/ToDoList';
 import Board from './components/Board';
 import ListUsers from './components/ListUsers/ListUsers';
 import ResultDisplayer from './components/ResultDisplayer/ResultDisplayer';
+import { Page } from './components/Page/Page';
+import WelcomeTitle from './components/WelcomeTitle/WelcomeTitle';
 
 function App() {
 
@@ -34,7 +36,18 @@ function App() {
             />
           }
         ></Route>
-        <Route path="/result" element={<ResultDisplayer getNewResult={() => 'test'}/>}></Route>
+        <Route
+          path="/result"
+          element={<ResultDisplayer getNewResult={() => "test"} />}
+        ></Route>
+        <Route
+          path="/page"
+          element={<Page user={{ firstName: "John", lastName: "Doe" }} />}
+        ></Route>
+        <Route
+          path="/welcome"
+          element={<WelcomeTitle user="Peter" primary />}
+        ></Route>
       </Routes>
     </ThemeProvider>
   );

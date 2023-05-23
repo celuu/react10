@@ -29,6 +29,12 @@ const Navigation = () => {
         <Link to="/result" className="calc-name">
           Result Displayer
         </Link>
+        <Link to="/page" className="calc-name">
+          Page prop
+        </Link>
+        <Link to="/welcome" className="calc-name">
+          Welcome Title
+        </Link>
       </div>
     );
 }

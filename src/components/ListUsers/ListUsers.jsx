@@ -1,25 +1,11 @@
-import { useEffect, useState } from "react";
-
 const ListUsers = ({users}) => {
-    const [count, setCount] = useState(0);
-    const [sorted, setSorted] = useState(users)
-
-    const sortNames = ({users}) => {
-        let copy = [...users];
-        setSorted(copy.sort((a, b) => a.lastName - b.lastName));
-        setCount(users.length);
-    }
-
-    useEffect(() => {
-        sortNames({users})
-    }, [])
-
+    const sorted = users.sort((a, b) => a.lastName.localeCompare(b.lastName));
 
     return (
       <div>
-        <div>Users: {count}</div>
+        <div>Users: {users.length}</div>
         <ul>
-            {users.map((user, idx) => (
+            {sorted.map((user, idx) => (
                 <li key={idx}>{user.firstName} {user.lastName}</li>
             ))}
         </ul>
